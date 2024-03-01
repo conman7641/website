@@ -1,20 +1,26 @@
-<!-- layouts/default.vue -->
-<template>
-    <div>
-      <!-- Global navigation bar -->
-      <header class="bg-gray-900 py-4">
-        <!-- Navigation links -->
-        <nav class="flex justify-center">
-          <nuxt-link to="/" exact active-class="border-b-2 border-white px-4 py-2 text-white" class="px-4 py-2 text-white">Home</nuxt-link>
-          <nuxt-link to="/about" active-class="border-b-2 border-white px-4 py-2 text-white" class="px-4 py-2 text-white">About</nuxt-link>
-          <!-- Add more navigation links as needed -->
-        </nav>
-      </header>
-      
-      <!-- Page content -->
-      <main>
-        <nuxt />
-      </main>
-    </div>
-  </template>
+<script setup lang="ts">
+const route = useRoute()
+
+const links = [{
+  label: 'About',
+  avatar: {
+    src: 'https://media.licdn.com/dms/image/D4E03AQFFhycQFzuD4w/profile-displayphoto-shrink_200_200/0/1664346326892?e=1714608000&v=beta&t=Wm9Abo41aZOtLG4Gsb3S4ZYDupSg3papM57qu2GMWbo'
+  },
+  to: '/'
   
+}, {
+  label: 'Contact',
+  icon: 'i-heroicons-phone',
+  to: '/contact'
+}, {
+  label: 'Github',
+  icon: "i-mdi-github",
+  to: `/github`
+}]
+</script>
+
+<template>
+  <UHorizontalNavigation :links="links" :ui="{ active: 'text-primary-500 dark:text-primary-400 before:bg-gray-100 dark:before:bg-gray-800' }"/>
+  <slot />
+</template>
+
